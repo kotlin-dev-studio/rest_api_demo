@@ -8,4 +8,7 @@ import org.springframework.web.bind.annotation.RestController
 class HomeController {
     @GetMapping("/")
     fun home() : ResponseEntity<String> = ResponseEntity.ok().body("Home")
+
+    @GetMapping("/login")
+    fun login() : ResponseEntity<String> = ResponseEntity.ok().body("Login")
 }
