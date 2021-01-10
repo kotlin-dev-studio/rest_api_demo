@@ -43,7 +43,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // Spring Security OAuth
-//    implementation("org.springframework.security.oauth:spring-security-oauth2:2.4.0.RELEASE")
+    implementation("org.springframework.security.oauth:spring-security-oauth2:2.4.0.RELEASE")
 
     // Additional development-time features
     developmentOnly("org.springframework.boot:spring-boot-devtools")
