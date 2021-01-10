@@ -98,3 +98,4 @@ local.properties
 buildSrcTmp/
 distTmp/
 outTmp/
+logs/

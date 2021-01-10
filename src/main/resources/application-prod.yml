@@ -1,1 +1,5 @@
 app.message="This is primary Property for ${spring.application.name} to PROD"
+
+logging:
+  file:
+    name: logs/production.log

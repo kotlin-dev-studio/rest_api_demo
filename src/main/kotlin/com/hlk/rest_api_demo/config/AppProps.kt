@@ -11,4 +11,10 @@ import kotlin.properties.Delegates
 class AppProps {
     var version: String by Delegates.notNull()
     var message: String by Delegates.notNull()
+
+    val session = AppPropsSession()
+}
+
+class AppPropsSession {
+    var timeoutMinute: Int by Delegates.notNull()
 }

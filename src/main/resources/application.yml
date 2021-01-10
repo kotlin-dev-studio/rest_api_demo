@@ -1,8 +1,21 @@
 app:
   version: 1.0.0
+  session:
+    timeout-minute: 720
 
 spring:
   application:
     name: rest_api_demo
+  main:
+    allow-bean-definition-overriding: true
   profiles:
     active: dev
+  session:
+    store-type: redis
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.session: INFO
+    org.springframework.web.servlet: DEBUG
+    redis.clients: INFO

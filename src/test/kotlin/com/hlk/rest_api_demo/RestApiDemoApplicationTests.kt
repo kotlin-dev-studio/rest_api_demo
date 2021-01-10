@@ -1,12 +1,14 @@
 package com.hlk.rest_api_demo
 
 import org.junit.jupiter.api.Test
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.test.context.ActiveProfiles
+import org.springframework.test.context.ContextConfiguration
 
+@ActiveProfiles("test")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class RestApiDemoApplicationTests() {
+@ContextConfiguration(classes = [RestApiDemoApplication::class])
+class RestApiDemoApplicationTests {
 
     @Test
     fun contextLoads() {

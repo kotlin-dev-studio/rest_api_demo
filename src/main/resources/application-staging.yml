@@ -21,5 +21,8 @@ spring:
           # Hibernate ddl auto (create, create-drop, validate, update)
           ddl-auto: update
 
+logging:
+  file:
+    name: logs/staging.log
 app:
   message: "This is primary Property for ${spring.application.name} to Staging"

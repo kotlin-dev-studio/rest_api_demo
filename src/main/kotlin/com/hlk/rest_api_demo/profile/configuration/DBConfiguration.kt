@@ -1,13 +1,10 @@
 package com.hlk.rest_api_demo.profile.configuration
 
 import com.hlk.rest_api_demo.config.AppProps
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Profile
-import org.springframework.stereotype.Component
 
 @Configuration
 @ConfigurationProperties("spring.datasource")
