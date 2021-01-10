@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.gradle.kotlin.dsl.compile as compile
 
 plugins {
     val kotlinVersion = "1.4.21"
@@ -33,14 +34,18 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // Spring Security OAuth
-    implementation("org.springframework.security.oauth:spring-security-oauth2:2.4.0.RELEASE")
+//    implementation("org.springframework.security.oauth:spring-security-oauth2:2.4.0.RELEASE")
 
     // Additional development-time features
     developmentOnly("org.springframework.boot:spring-boot-devtools")
 
     // Database
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     runtimeOnly("mysql:mysql-connector-java")
+
+    // Logging
+    implementation("io.github.microutils:kotlin-logging:1.7.4")
 
     // Test API
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
@@ -50,6 +55,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     testImplementation("com.ninja-squad:springmockk:1.1.3")
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:4.3.2")
 }
 
 tasks.withType<KotlinCompile> {
@@ -60,5 +66,8 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.withType<Test> {
+    doFirst {
+        systemProperty("spring.profiles.active", "test")
+    }
     useJUnitPlatform()
 }
