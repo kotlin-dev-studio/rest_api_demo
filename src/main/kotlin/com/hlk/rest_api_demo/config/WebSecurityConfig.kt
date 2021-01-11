@@ -1,5 +1,6 @@
 package com.hlk.rest_api_demo.config
 
+import com.hlk.rest_api_demo.service.UserService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.authentication.AuthenticationManager
@@ -14,18 +15,12 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity
 
 @Configuration
 @EnableWebSecurity
-internal class WebSecurityConfig : WebSecurityConfigurerAdapter() {
+internal class WebSecurityConfig(private val userService: UserService) : WebSecurityConfigurerAdapter() {
 
     @Throws(Exception::class)
     override fun configure(auth: AuthenticationManagerBuilder) {
-        auth.inMemoryAuthentication()
-            .withUser("admin")
-            .password(passwordEncoder().encode("1234"))
-            .roles("ADMIN")
-            .and()
-            .withUser("user")
-            .password(passwordEncoder().encode("1234"))
-            .roles("USER")
+        auth.userDetailsService(userService)
+            .passwordEncoder(passwordEncoder())
     }
 
     override fun configure(webSecurity: WebSecurity) {

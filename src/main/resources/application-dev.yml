@@ -9,7 +9,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/rest_api_demo?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
     username: root
-    password: password
+    password: 1234
 
   ## Hibernate Properties
   # The SQL dialect makes Hibernate generate better SQL for the chosen database

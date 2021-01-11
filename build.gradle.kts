@@ -41,7 +41,7 @@ dependencies {
     // Introspecting the structure of your own program at runtime
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-
+    
     // Spring Security OAuth
     implementation("org.springframework.security.oauth:spring-security-oauth2:2.4.0.RELEASE")
 
@@ -51,6 +51,7 @@ dependencies {
     // Database
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-jdbc")
     runtimeOnly("mysql:mysql-connector-java")
 
     // Logging
