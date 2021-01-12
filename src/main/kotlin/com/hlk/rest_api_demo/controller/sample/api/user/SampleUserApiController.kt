@@ -14,5 +14,5 @@ import org.springframework.web.bind.annotation.RestController
 class SampleUserApiController {
     @GetMapping("/getUser")
     fun getUser(): ResponseEntity<ResultDataRes<User>> =
-        ResponseEntity.ok(ResultDataRes(User("kimhuor", "1234")))
+        ResponseEntity.ok(ResultDataRes(User(1, "username", "email")))
 }

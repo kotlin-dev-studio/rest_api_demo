@@ -42,5 +42,5 @@ class SampleController(
         var id: Int,
         var name: String,
         var date: LocalDateTime
-    ) : Serializable
+    ): Serializable
 }
