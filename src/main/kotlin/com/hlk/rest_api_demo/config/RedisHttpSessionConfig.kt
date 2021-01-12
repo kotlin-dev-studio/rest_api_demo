@@ -23,10 +23,10 @@ class RedisHttpSessionConfig : RedisHttpSessionConfiguration() {
     @Bean
     override fun <S : Session?> springSessionRepositoryFilter(sessionRepository: SessionRepository<S>): SessionRepositoryFilter<out Session> {
         return super.springSessionRepositoryFilter(
-            SafeDeserializationRepository(
-                sessionRepository,
-                redisTemplate!!
-            )
+                SafeDeserializationRepository(
+                        sessionRepository,
+                        redisTemplate!!
+                )
         )
     }
 

@@ -12,8 +12,8 @@ import javax.servlet.http.HttpSession
 @RequestMapping("/sample")
 @RestController
 class SampleController(
-    private val appProps: AppProps,
-    private val httpSession: HttpSession
+        private val appProps: AppProps,
+        private val httpSession: HttpSession
 ) {
     @GetMapping("/appProps")
     fun appProps() = appProps
@@ -39,8 +39,8 @@ class SampleController(
     }
 
     class Test(
-        var id: Int,
-        var name: String,
-        var date: LocalDateTime
+            var id: Int,
+            var name: String,
+            var date: LocalDateTime
     ) : Serializable
 }

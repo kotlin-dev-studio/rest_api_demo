@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @BearerHeaderToken
 class SampleAuthenApiController(
-    private val appProps: AppProps
+        private val appProps: AppProps
 ) {
     @GetMapping("/appProps")
     fun appProps() = appProps

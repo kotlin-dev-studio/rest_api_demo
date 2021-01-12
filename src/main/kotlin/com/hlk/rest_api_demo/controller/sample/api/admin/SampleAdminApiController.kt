@@ -15,5 +15,5 @@ class SampleAdminApiController {
     @BearerHeaderToken
     @GetMapping("/getAdmin")
     fun getAdmin(): ResponseEntity<ResultDataRes<Admin>> =
-        ResponseEntity.ok(ResultDataRes(Admin("Admin", "1234")))
+            ResponseEntity.ok(ResultDataRes(Admin("Admin", "1234")))
 }

@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Profile
 @Configuration
 @ConfigurationProperties("spring.datasource")
 class DBConfiguration(
-    private val appProps: AppProps
+        private val appProps: AppProps
 ) {
     var url: String? = null
     var username: String? = null

@@ -17,10 +17,10 @@ class HomeController {
         return when (type) {
             "success" -> ResponseEntity.status(HttpStatus.OK).body(ResultRes.success("Success message!"))
             "failure" -> ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
-                .body(ResultRes.failure("Failure message!"))
+                    .body(ResultRes.failure("Failure message!"))
             else -> {
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
-                    ResultRes.failure("Please provide type result with success or failure")
+                        ResultRes.failure("Please provide type result with success or failure")
                 )
             }
         }

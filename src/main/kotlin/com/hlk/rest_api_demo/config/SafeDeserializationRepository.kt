@@ -12,8 +12,8 @@ import org.springframework.session.SessionRepository
  */
 
 class SafeDeserializationRepository<S : Session?>(
-    private val repository: SessionRepository<S>,
-    private val redisTemplate: RedisTemplate<Any?, Any?>
+        private val repository: SessionRepository<S>,
+        private val redisTemplate: RedisTemplate<Any?, Any?>
 ) : SessionRepository<S> {
 
     private val log: Log = LogFactory.getLog(this::class.java)
