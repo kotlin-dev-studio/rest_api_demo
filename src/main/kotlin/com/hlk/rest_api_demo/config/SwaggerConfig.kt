@@ -17,7 +17,11 @@ class SwaggerConfig {
         .produces(HashSet(listOf("application/json")))
         .select()
         .apis(RequestHandlerSelectors.any())
-        .paths(PathSelectors.ant("/api/**"))
+        .paths(
+            PathSelectors.ant("/api/**")
+                .or(PathSelectors.ant("/login")
+                    .or(PathSelectors.ant("/signup")
+                        .or(PathSelectors.ant("/sample/**")))))
         .build()
         .securitySchemes(listOf(apiKey()) as List<SecurityScheme>?)
     private fun apiKey(): ApiKey? {

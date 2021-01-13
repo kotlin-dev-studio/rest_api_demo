@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.builders.WebSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
+import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl
@@ -21,13 +22,24 @@ import javax.sql.DataSource
 
 @Configuration
 @EnableWebSecurity
-internal class WebSecurityConfig(private val userService: UserService,
-                                 private val unauthorizedHandler: AuthEntryPointJwt) : WebSecurityConfigurerAdapter() {
+internal class WebSecurityConfig(
+    private val userService: UserService,
+    private val unauthorizedHandler: AuthEntryPointJwt
+) : WebSecurityConfigurerAdapter() {
     @Autowired
     private val dataSource: DataSource? = null
 
     override fun configure(webSecurity: WebSecurity) {
-        webSecurity.ignoring().antMatchers("/sample/**", "/signup", "/login", "/swagger-ui/")
+        webSecurity.ignoring().antMatchers(
+            "/sample/**",
+            "/signup",
+            "/login",
+            "/swagger-ui/",
+            "/swagger-ui/{springfox,swagger-ui}.*",
+            "/configuration/**",
+            "/swagger-resources/**",
+            "/v2/api-docs"
+        )
     }
 
     @Throws(Exception::class)
@@ -49,17 +61,20 @@ internal class WebSecurityConfig(private val userService: UserService,
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
         http.csrf().disable()
-                .formLogin().disable()
-                .anonymous().disable()
-                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-                .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/signup").permitAll()
-                .antMatchers("/swagger-ui/").permitAll()
+            .formLogin().disable()
+            .anonymous().disable()
+            .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+            .authorizeRequests()
+            .antMatchers("/").permitAll()
+            .antMatchers("/login").permitAll()
+            .antMatchers("/signup").permitAll()
+            .antMatchers("/swagger-ui/").permitAll()
             .antMatchers("/api/user/**").hasRole(Role.USER)
             .antMatchers("/api/admin/**").hasRole(Role.ADMIN)
             .anyRequest().authenticated()
+            .and()
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter::class.java)
     }

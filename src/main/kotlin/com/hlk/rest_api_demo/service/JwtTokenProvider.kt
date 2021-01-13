@@ -14,7 +14,7 @@ import javax.servlet.ServletException
 class JwtTokenProvider {
     // Đoạn JWT_SECRET này là bí mật, chỉ có phía server biết
     val SECRET: String? = "SecretKeyToGenJWTs"
-    val EXPIRATION_TIME: Int = 7200 // 2 hours
+    val EXPIRATION_TIME: Int = 7200000 // 2 hours
     val REFRESH_TIME: Int = 864000 // 10 days
     val TOKEN_PREFIX = "Bearer "
 
