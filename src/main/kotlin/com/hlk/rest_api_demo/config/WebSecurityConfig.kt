@@ -22,12 +22,12 @@ import javax.sql.DataSource
 
 @Configuration
 @EnableWebSecurity
-internal class WebSecurityConfig(
-    private val userService: UserService,
-    private val unauthorizedHandler: AuthEntryPointJwt
-) : WebSecurityConfigurerAdapter() {
+internal class WebSecurityConfig : WebSecurityConfigurerAdapter() {
     @Autowired
-    private val dataSource: DataSource? = null
+    private lateinit var dataSource: DataSource
+
+    @Autowired
+    private lateinit var userService: UserService
 
     override fun configure(webSecurity: WebSecurity) {
         webSecurity.ignoring().antMatchers(
@@ -63,7 +63,7 @@ internal class WebSecurityConfig(
         http.csrf().disable()
             .formLogin().disable()
             .anonymous().disable()
-            .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+            .exceptionHandling().authenticationEntryPoint(unauthorizedHandler()).and()
             .authorizeRequests()
             .antMatchers("/").permitAll()
             .antMatchers("/login").permitAll()
@@ -80,14 +80,19 @@ internal class WebSecurityConfig(
     }
 
     @Bean
-    fun persistentTokenRepository(): PersistentTokenRepository? {
+    fun persistentTokenRepository(): PersistentTokenRepository {
         val db = JdbcTokenRepositoryImpl()
-        db.setDataSource(dataSource!!)
+        db.setDataSource(dataSource)
         return db
     }
 
     @Bean
     fun jwtAuthenticationFilter(): JwtAuthenticationFilter? {
         return JwtAuthenticationFilter()
+    }
+
+    @Bean
+    fun unauthorizedHandler(): AuthEntryPointJwt {
+        return AuthEntryPointJwt()
     }
 }

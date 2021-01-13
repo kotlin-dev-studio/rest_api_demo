@@ -68,7 +68,9 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     testImplementation("com.ninja-squad:springmockk:1.1.3")
-//    testImplementation("io.kotest:kotest-runner-junit5-jvm:4.3.2")
+//    testImplementation("org.springframework.security:spring-security-test:5.3.1.RELEASE")
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:4.3.2")
+    testImplementation("io.kotest:kotest-assertions-core:4.3.2")
 
     // Add Swagger
     implementation("io.springfox:springfox-boot-starter:3.0.0")
