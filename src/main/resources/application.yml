@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: rest_api_demo
+  profiles:
+    active: dev
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.session: INFO
+    org.springframework.web.servlet: DEBUG
+    redis.clients: INFO

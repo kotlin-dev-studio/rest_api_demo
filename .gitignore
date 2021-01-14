@@ -98,3 +98,8 @@ local.properties
 buildSrcTmp/
 distTmp/
 outTmp/
+/logs
+
+### Config Spring Boot DEV and Test ###
+src/main/resources/application-dev.yml
+src/main/resources/application-test.yml

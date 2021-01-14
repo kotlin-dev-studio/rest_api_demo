@@ -1,0 +1,28 @@
+## SERVER CONFIG
+server:
+  port: 8080
+
+## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/rest_api_demo?createDatabaseIfNotExist=true&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
+    username: xxx
+    password: xxx
+    platform: mysql
+    initialization-mode: always
+
+  ## Hibernate Properties
+  # The SQL dialect makes Hibernate generate better SQL for the chosen database
+  jpa:
+    properties:
+      hibernate:
+        dialect: "org.hibernate.dialect.MySQL5InnoDBDialect"
+
+    # Hibernate ddl auto (create, create-drop, validate, update)
+    hibernate:
+      ddl-auto: update
+
+## JWT Secret
+jwt:
+  secret: "7b1ea901a27f087bcb7ab711727ead749e27f3d8e12e1f0494071a0414c02d8851aa8ca9108403341712d25086292b0a62eb76ac176498df82ca5c64f2a9c0f7"
+  expireTimeInHour: 5
