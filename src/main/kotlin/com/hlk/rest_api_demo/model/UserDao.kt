@@ -14,6 +14,6 @@ class UserDao {
     var username: String? = null
 
     @Column
-    @JsonIgnore
+//    @JsonIgnore
     var password: String? = null
 }
