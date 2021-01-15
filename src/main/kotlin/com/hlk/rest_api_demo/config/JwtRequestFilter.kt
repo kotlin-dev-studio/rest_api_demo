@@ -42,14 +42,15 @@ class JwtRequestFilter : OncePerRequestFilter() {
             logger.warn("JWT Token does not begin with Bearer String")
         }
 
-        //Once we get the token validate it.
+        // Once we get the token validate it.
         if (username != null && SecurityContextHolder.getContext().authentication == null) {
             val userDetails: UserDetails = jwtUserDetailsService.loadUserByUsername(username)
 
             // if token is valid configure Spring Security to manually set authentication
             if (jwtTokenUtil.validateToken(jwtToken!!, userDetails)) {
                 val usernamePasswordAuthenticationToken = UsernamePasswordAuthenticationToken(
-                    userDetails, null, userDetails.authorities)
+                    userDetails, null, userDetails.authorities
+                )
                 usernamePasswordAuthenticationToken.details = WebAuthenticationDetailsSource().buildDetails(request)
                 // After setting the Authentication in the context, we specify
                 // that the current user is authenticated. So it passes the Spring Security Configurations successfully.

@@ -19,7 +19,6 @@ class JwtTokenUtil : Serializable {
     @Value("\${jwt.expireTimeInHour}")
     private val expireTimeInHour: Long = 5
 
-
     fun getUsernameFromToken(token: String?): String {
         return getClaimFromToken(token) { obj: Claims -> obj.subject }
     }

@@ -22,6 +22,6 @@ class SwaggerConfig {
         .build()
         .securitySchemes(listOf(apiKey()) as List<SecurityScheme>)
     private fun apiKey(): ApiKey {
-        return ApiKey("Authorization", "Authorization", "header");
+        return ApiKey("Authorization", "Authorization", "header")
     }
 }

@@ -24,7 +24,8 @@ class JwtUserDetailsService : UserDetailsService {
     override fun loadUserByUsername(username: String): UserDetails {
         val user: UserDao = userDao.findByUsername(username)
             ?: throw UsernameNotFoundException("User not found with username: $username")
-        return User(user.username, user.password,
+        return User(
+            user.username, user.password,
             ArrayList()
         )
     }

@@ -9,7 +9,7 @@ import java.io.Serializable
 
 class Health(
     val status: String
-): Serializable
+) : Serializable
 
 @RestController
 @BearerHeaderToken

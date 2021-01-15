@@ -28,7 +28,7 @@ class JwtAuthenticationController {
     @RequestMapping(value = ["/authenticate"], method = [RequestMethod.POST])
     @Throws(Exception::class)
     fun createAuthenticationToken(@RequestBody authenticationRequest: JwtRequest): ResponseEntity<*> {
-        authenticate(authenticationRequest.username ?:  "", authenticationRequest.password ?: "")
+        authenticate(authenticationRequest.username ?: "", authenticationRequest.password ?: "")
         val userDetails = userDetailsService.loadUserByUsername(authenticationRequest.username ?: "")
         val token = jwtTokenUtil.generateToken(userDetails)
         return ResponseEntity.ok(JwtResponse(token))

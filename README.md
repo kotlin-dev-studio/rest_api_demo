@@ -72,3 +72,14 @@ GET /home           # Return string Home
 
 GET /sample/health  # Return JSON object {status: "Alive"}
 ```
+
+6. Klint
+
+- Configuration file `.editorconfig` [ref](https://github.com/pinterest/ktlint#editorconfig)
+
+- Command check and format:
+
+```shell
+./gradlew ktlintCheck
+./gradlew ktlintFormat
+```
