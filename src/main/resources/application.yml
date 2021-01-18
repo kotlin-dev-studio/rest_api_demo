@@ -9,4 +9,4 @@ logging:
     org.springframework.security: DEBUG
     org.springframework.session: INFO
     org.springframework.web.servlet: DEBUG
-    redis.clients: INFO
+    org.hibernate: ERROR

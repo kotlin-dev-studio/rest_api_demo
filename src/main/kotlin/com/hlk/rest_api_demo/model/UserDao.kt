@@ -5,15 +5,16 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "users")
-class UserDao {
+data class UserDao(
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val id: Long = 0
+    private val id: Long = 0,
 
     @Column
-    var username: String? = null
+    var username: String? = null,
 
     @Column
     @JsonIgnore
     var password: String? = null
-}
+)

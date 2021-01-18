@@ -22,3 +22,7 @@ spring:
 jwt:
   secret: "c2d8be23bb4915ba85af2e1754faf0865506d6587b68c1d65df1fd22a29cd90cbf31f5078e4a46ddae1e668195d79dcf27868b1cc1b27fa1042a637a1440a54d"
   expireTimeInHour: 5
+
+logging:
+  file:
+    name: log/test.log
